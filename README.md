@@ -28,27 +28,32 @@ To run this simulation locally, you must have the following installed:
 ```toml
 [profile.default]
 ffi = true
+```
 
 📦 Installation & Setup
 Clone the repository:
 
-Bash
+```Bash
 git clone [https://github.com/WobbbleFoot/RANDAO-VDF-Implementation.git](https://github.com/WobbbleFoot/RANDAO-VDF-Implementation.git)
 cd RANDAO-VDF-Implementation
+```
 Install the required Python cryptography libraries:
 (Note for Ubuntu/WSL users: If you encounter a PEP 668 "externally-managed-environment" error, use the --break-system-packages flag to install these locally for the simulation).
 
-Bash
+```Bash
 pip install eth-utils "eth-hash[pycryptodome]" --break-system-packages
+```
 Compile the smart contracts:
 
-Bash
+```Bash
 forge build
+```
 🚀 Reproducing the Results
 To execute the unified simulation, trigger the Python off-chain worker, and observe the attacker's decision-making logic in real-time, run the test with level-3 verbosity:
 
-Bash
-forge test --fuzz-runs 1 -vvv
+```Bash
+forge test --fuzz-runs 1 -vv
+```
 📊 Empirical Findings
 1. Predictability and Bias Resistance
 When running the simulation, the console logs will demonstrate the attacker successfully manipulating the Plain RANDAO system to achieve a targeted outcome ~75% of the time. In the VDF-secured system, the sequential compute delay forces the attacker to guess blindly, collapsing their win rate to a fair 50%.
